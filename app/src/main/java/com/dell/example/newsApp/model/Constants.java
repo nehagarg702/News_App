@@ -1,27 +1,20 @@
 package com.dell.example.newsApp.model;
 
+/*****
+ * Class contain the constants used in This Project
+ */
 public class Constants {
 
-
-    //New api version
     public static final String BASE_URL = "https://newsapi.org/v2/";
 
-    //API Key
     public static final String API_KEY = "80ffc1c286c04e3caaf3d38440fabe94";
 
-    //Used to save the instance of the recyclerView
     public static final String RECYCLER_STATE_KEY = "recycler_list_state";
 
-    //Used to save the instance of the title of Toolbar.
     public static final String TITLE_STATE_KEY = "title_state";
 
-    //Used to save the instance of the selected source.
     public static final String SOURCE = "source";
 
-    //Used to save the instance of the title of Toolbar.
-    public static final String TITLE_WEBVIEW_KEY = "save_text_webView";
-
-    //Used by intents
     public static final String INTENT_URL = "url";
 
     public static final String INTENT_HEADLINE = "key_HeadLine";
@@ -29,6 +22,4 @@ public class Constants {
     public static final String INTENT_DATE = "key_date";
     public static final String INTENT_IMG_URL = "key_imgURL";
     public static final String INTENT_ARTICLE_URL = "key_URL";
-
-    public static final String TRANSITION = "transition";
 }

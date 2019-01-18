@@ -1,4 +1,7 @@
 package com.dell.example.newsApp;
+/****
+ * Class for caching the data for four weeks
+ */
 
 import android.support.annotation.NonNull;
 import com.dell.example.newsApp.UtilityMethods;

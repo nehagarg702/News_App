@@ -1,5 +1,9 @@
 package com.dell.example.newsApp;
 
+/*****
+ * Class to load the cached data in a minute
+ */
+
 import android.support.annotation.NonNull;
 import java.io.IOException;
 import okhttp3.Interceptor;

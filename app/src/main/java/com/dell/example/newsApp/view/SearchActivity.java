@@ -1,7 +1,8 @@
 package com.dell.example.newsApp.view;
 
-import android.content.res.AssetManager;
-import android.graphics.Typeface;
+/*
+Search Activity allow us to search about news contain that data and display them
+ */
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -41,14 +42,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener{
 
     private EditText mEdtSearch;
     private TextView mTxvNoResultsFound;
     private SwipeRefreshLayout mSwipeRefreshSearch;
     private RecyclerView mRecyclerViewSearch;
     private DataAdapter adapter;
-    private Typeface montserrat_regular;
     private ArrayList<ArticleStructure> articleStructure = new ArrayList<>();
 
     @Override
@@ -97,8 +97,8 @@ public class SearchActivity extends AppCompatActivity {
 
     private void initViews() {
         mEdtSearch = findViewById(R.id.editText_search);
-        mEdtSearch.setTypeface(montserrat_regular);
         mSwipeRefreshSearch = findViewById(R.id.swipe_refresh_layout_search);
+        mSwipeRefreshSearch.setOnRefreshListener(this);
         mRecyclerViewSearch = findViewById(R.id.search_recycler_view);
         mTxvNoResultsFound = findViewById(R.id.tv_no_results);
         mRecyclerViewSearch.setLayoutManager(new LinearLayoutManager(SearchActivity.this));
@@ -143,7 +143,7 @@ public class SearchActivity extends AppCompatActivity {
                         mTxvNoResultsFound.setVisibility(View.GONE);
                         mRecyclerViewSearch.setAdapter(adapter);
                         mSwipeRefreshSearch.setRefreshing(false);
-                        mSwipeRefreshSearch.setEnabled(false);
+                        mSwipeRefreshSearch.setEnabled(true);
                     } else if (response.body().getTotalResults() == 0){
                         mSwipeRefreshSearch.setRefreshing(false);
                         mSwipeRefreshSearch.setEnabled(false);
@@ -152,6 +152,14 @@ public class SearchActivity extends AppCompatActivity {
                         mTxvNoResultsFound.setText("No Results found for \"" + search + "\"." );
                     }
                 }
+                else
+                {
+                    mSwipeRefreshSearch.setRefreshing(false);
+                    mSwipeRefreshSearch.setEnabled(true);
+                    mTxvNoResultsFound.setVisibility(View.VISIBLE);
+                    mRecyclerViewSearch.setVisibility(View.GONE);
+                    mTxvNoResultsFound.setText("Please check your Internet Connection and Again load the Data" );
+                 }
             }
 
 
@@ -192,5 +200,10 @@ public class SearchActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
+    }
+
+    @Override
+    public void onRefresh() {
+        searchEverything(mEdtSearch.getText().toString());
     }
 }

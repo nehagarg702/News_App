@@ -1,9 +1,11 @@
 package com.dell.example.newsApp.view;
 
+/***
+ * Activity to open the news in webView
+ */
+
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.graphics.Bitmap;
-import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -27,22 +29,13 @@ public class WebViewActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private String url;
     private TextView mTitle;
-    private Typeface montserrat_regular;
     private float m_downX;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view);
-
-        AssetManager assetManager = this.getApplicationContext().getAssets();
-        montserrat_regular = Typeface.createFromAsset(assetManager, "fonts/Montserrat-Regular.ttf");
-
         url = getIntent().getStringExtra(Constants.INTENT_URL);
-
-        /*
-        ** Custom Toolbar ( App Bar )
-        **/
         createToolbar();
 
         webView = findViewById(R.id.webView_article);
@@ -62,7 +55,6 @@ public class WebViewActivity extends AppCompatActivity {
         }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mTitle = findViewById(R.id.toolbar_title_web_view);
-        mTitle.setTypeface(montserrat_regular);
         mTitle.setText(url);
     }
 
@@ -118,7 +110,6 @@ public class WebViewActivity extends AppCompatActivity {
                     case MotionEvent.ACTION_MOVE:
                     case MotionEvent.ACTION_CANCEL:
                     case MotionEvent.ACTION_UP: {
-                        // set x so that it doesn't move
                         event.setLocation(m_downX, event.getY());
                     }
                     break;
@@ -143,31 +134,11 @@ public class WebViewActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            /*
-            * Override the Up/Home Button
-            * */
             case android.R.id.home:
                 onBackPressed();
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle bundle) {
-        super.onSaveInstanceState(bundle);
-        bundle.putString(Constants.TITLE_WEBVIEW_KEY, url);
-        webView.saveState(bundle);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        if (savedInstanceState != null) {
-            createToolbar();
-            webView.restoreState(savedInstanceState);
-            mTitle.setText(savedInstanceState.getString(Constants.TITLE_WEBVIEW_KEY));
-        }
     }
 
     @Override

@@ -1,7 +1,8 @@
 package com.dell.example.newsApp.network;
 
-
-import com.dell.example.newsApp.model.ArticleResponse;
+/*
+used to get the remaining url part used for getting the data
+ */
 import com.dell.example.newsApp.model.NewsResponse;
 
 import retrofit2.Call;

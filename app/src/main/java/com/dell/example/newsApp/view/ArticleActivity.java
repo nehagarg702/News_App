@@ -1,11 +1,10 @@
 package com.dell.example.newsApp.view;
 
+/*
+Activity which display the article image and little bit description and a button to open the full article. Include Glide to load the image from url
+ */
 import android.content.Intent;
-import android.content.res.AssetManager;
-import android.graphics.Typeface;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -17,7 +16,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.dell.example.newsApp.R;
 import com.dell.example.newsApp.model.Constants;
-
 
 public class ArticleActivity extends AppCompatActivity {
 
@@ -37,7 +35,6 @@ public class ArticleActivity extends AppCompatActivity {
 
     private void buttonLinktoFullArticle() {
         Button linkToFullArticle = findViewById(R.id.article_button);
-        //linkToFullArticle.setTypeface(montserrat_regular);
         linkToFullArticle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,9 +79,6 @@ public class ArticleActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            /*
-            * Override the Up/Home Button
-            * */
             case android.R.id.home:
                 onBackPressed();
                 return true;

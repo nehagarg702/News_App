@@ -1,5 +1,9 @@
 package com.dell.example.newsApp.model;
 
+/*
+** Class contain all the parameter for news
+**/
+
 public class Article {
     private String author;
     private String title;

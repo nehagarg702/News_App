@@ -4,7 +4,7 @@ package com.dell.example.newsApp.model;
 import java.util.List;
 
 /*
-** POJO class to get the list of Articles.
+** Class to get the source and rest of details od an article
 **/
 public class ArticleResponse {
     private String status;

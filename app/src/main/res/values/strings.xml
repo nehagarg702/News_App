@@ -1,10 +1,11 @@
 <resources>
-    <string name="app_name">News App</string>
-    <string name="title_activity_article">News App</string>
+    <string name="app_name">News Reader</string>
+    <string name="Reader_name">News Reader</string>
+    <string name="title_activity_article">News Reader</string>
     <string name="menu_title_url">url</string>
     <string name="iv_card_content_description_image">Image of the news response</string>
     <string name="collasping_image">Collasping Image</string>
-    <string name="menu_title_about">About the app</string>
+    <string name="menu_title_about">About the Reader</string>
     <string name="tv_made_with_love_by">Made with &#9829; by</string>
     <string name="toolbar_default_text">Google News India</string>
     <string name="material_drawer">Material Drawer</string>

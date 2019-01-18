@@ -2,6 +2,10 @@ package com.dell.example.newsApp.model;
 
 import java.util.ArrayList;
 
+/**
+ * Class contain the details regarding News after retyriving from API
+ */
+
 public class NewsResponse {
     private String status;
     private int totalResults;

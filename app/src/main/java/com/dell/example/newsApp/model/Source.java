@@ -1,5 +1,8 @@
 package com.dell.example.newsApp.model;
 
+/**
+ * Class contain the information regarding Source of News
+ */
 
 public class Source {
     private String id;

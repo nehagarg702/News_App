@@ -1,11 +1,17 @@
 package com.dell.example.newsApp.network;
 
+/*
+use the Retrofit to get data from url and use okhttp to build the request
+ */
 import com.dell.example.newsApp.model.Constants;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/****
+ * Class used to get the data from url by using retrofit and okhttp
+ */
 public class ApiClient {
 
     private static Retrofit retrofit = null;
@@ -14,7 +20,7 @@ public class ApiClient {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create()) //<-- Uses GSON convertor to convert the JSON to JAVA objects
+                .addConverterFactory(GsonConverterFactory.create()) //<-- convert the JSON to JAVA objects
                 .client(httpClient.build())                         //<-- Builds the request with OkHttp
                 .build();
         }

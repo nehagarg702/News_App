@@ -1,5 +1,8 @@
 package com.dell.example.newsApp;
 
+/****
+ * Class to check the network connection
+ */
 
 import android.content.Context;
 import android.net.ConnectivityManager;

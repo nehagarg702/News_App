@@ -1,7 +1,7 @@
 package com.dell.example.newsApp;
 
+import android.app.Activity;
 import android.content.Context;
-import com.dell.example.newsApp.R;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -20,8 +20,9 @@ import com.dell.example.newsApp.view.ArticleActivity;
 
 import java.util.ArrayList;
 
+
 /*
-** This Class is Used to fetch the data from the POJO Article and bind them to the views.
+** Adapter for adding data to Recycle View. Also used Glide to load the Image from url.
 **/
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
 
@@ -34,9 +35,6 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         this.articles = articles;
     }
 
-    /*
-    ** inflating the cardView.
-    **/
     @Override
     public DataAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_row, parent, false);
@@ -47,6 +45,11 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     public void onBindViewHolder(DataAdapter.ViewHolder holder, int position) {
 
         String title = articles.get(position).getTitle();
+        if (title.endsWith("- Times of India")) {
+            title = title.replace("- Times of India", "");
+        } else if(title.endsWith(" - Firstpost")) {
+            title = title.replace(" - Firstpost", "");
+        }
         holder.tv_card_main_title.setText(title);
         Glide.with(mContext)
                 .load(articles.get(position).getUrlToImage())
@@ -54,6 +57,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
                 .centerCrop()
                 .error(R.drawable.ic_placeholder)
                 .into(holder.img_card_main);
+
         if (position > lastPosition) {
             Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.item_animation_fall_down);
             holder.cardView.startAnimation(animation);
@@ -61,17 +65,12 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         }
     }
 
-    /*
-    ** Last parameter for binding the articles in OnBindViewHolder.
-    **/
     @Override
     public int getItemCount() {
         return articles.size();
     }
 
-    /*
-    ** ViewHolder class which holds the different views in the recyclerView .
-    **/
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView tv_card_main_title;
         private ImageView img_card_main;
@@ -88,6 +87,11 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         @Override
         public void onClick(View v) {
             String headLine = articles.get(getAdapterPosition()).getTitle();
+            if (headLine.endsWith(" - Times of India")) {
+                headLine = headLine.replace(" - Times of India", "");
+            } else if(headLine.endsWith(" - Firstpost")) {
+                headLine = headLine.replace(" - Firstpost", "");
+            }
             String description = articles.get(getAdapterPosition()).getDescription();
             String date = articles.get(getAdapterPosition()).getPublishedAt();
             String imgURL = articles.get(getAdapterPosition()).getUrlToImage();
@@ -99,6 +103,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
             intent.putExtra(Constants.INTENT_IMG_URL, imgURL);
             intent.putExtra(Constants.INTENT_ARTICLE_URL, URL);
             mContext.startActivity(intent);
-            }
+            ((Activity) mContext).overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
+        }
     }
 }

@@ -1,5 +1,8 @@
 package com.dell.example.newsApp.model;
 
+/**
+ * Class contain all the parameter that define News Article Structure.
+ */
 
 public class ArticleStructure {
     private Source source;
