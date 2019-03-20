@@ -6,6 +6,8 @@ package com.dell.example.newsApp.view;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
@@ -72,6 +74,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     private RecyclerView recyclerView;
     private Parcelable listState;
     private TextView mTitle;
+    private Typeface montserrat_regular;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +88,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         SOURCE = SOURCE_ARRAY[0];
         mTitle.setText(R.string.toolbar_default_text);
         onLoadingSwipeRefreshLayout();
-
+        AssetManager assetManager = this.getApplicationContext().getAssets();
+        montserrat_regular = Typeface.createFromAsset(assetManager, "fonts/Montserrat-Regular.ttf");
         createDrawer(savedInstanceState, toolbar);
     }
 
@@ -95,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
         mTitle = findViewById(R.id.toolbar_title);
+        mTitle.setTypeface(montserrat_regular);
     }
 
     private void createRecyclerView() {
@@ -107,61 +113,61 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     }
 
     private void createDrawer(Bundle savedInstanceState, final Toolbar toolbar) {
-        PrimaryDrawerItem item0 = new PrimaryDrawerItem().withIdentifier(0).withName("GENERAL").withSelectable(false);
+        PrimaryDrawerItem item0 = new PrimaryDrawerItem().withIdentifier(0).withName("GENERAL").withSelectable(false).withTypeface(montserrat_regular);;
         PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Google News India")
-                .withIcon(R.drawable.ic_googlenews);
+                .withIcon(R.drawable.ic_googlenews).withTypeface(montserrat_regular);
         PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName("Abc News")
-                .withIcon(R.drawable.abcnews);
-        PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName("BBC News").withIcon(R.drawable.ic_bbcnews);
+                .withIcon(R.drawable.abcnews).withTypeface(montserrat_regular);
+        PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withTypeface(montserrat_regular).withName("BBC News").withIcon(R.drawable.ic_bbcnews);
         PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName("CNN")
-                .withIcon(R.drawable.ic_ccnnews);
+                .withIcon(R.drawable.ic_ccnnews).withTypeface(montserrat_regular);
         PrimaryDrawerItem item5 = new PrimaryDrawerItem().withIdentifier(5).withName("ESPN")
-                .withIcon(R.drawable.espn);
+                .withIcon(R.drawable.espn).withTypeface(montserrat_regular);;
         PrimaryDrawerItem item6 = new PrimaryDrawerItem().withIdentifier(6).withName("The Hindu")
-                .withIcon(R.drawable.ic_thehindu);
+                .withIcon(R.drawable.ic_thehindu).withTypeface(montserrat_regular);;
         PrimaryDrawerItem item7 = new PrimaryDrawerItem().withIdentifier(7).withName("The Times of India")
-                .withIcon(R.drawable.ic_timesofindia);
-        SectionDrawerItem item8 = new SectionDrawerItem().withIdentifier(8).withName("ENTERTAINMENT");
+                .withIcon(R.drawable.ic_timesofindia).withTypeface(montserrat_regular);;
+        SectionDrawerItem item8 = new SectionDrawerItem().withIdentifier(8).withName("ENTERTAINMENT").withTypeface(montserrat_regular);;
         PrimaryDrawerItem item9 = new PrimaryDrawerItem().withIdentifier(9).withName("Buzzfeed")
-                .withIcon(R.drawable.ic_buzzfeednews);
+                .withIcon(R.drawable.ic_buzzfeednews).withTypeface(montserrat_regular);;
         PrimaryDrawerItem item10 = new PrimaryDrawerItem().withIdentifier(10).withName("Mashable")
-                .withIcon(R.drawable.ic_mashablenews);
+                .withIcon(R.drawable.ic_mashablenews).withTypeface(montserrat_regular);;
         PrimaryDrawerItem item11 = new PrimaryDrawerItem().withIdentifier(11).withName("MTV News")
-                .withIcon(R.drawable.ic_mtvnews);
-        SectionDrawerItem item12 = new SectionDrawerItem().withIdentifier(12).withName("SPORTS");
+                .withIcon(R.drawable.ic_mtvnews).withTypeface(montserrat_regular);;
+        SectionDrawerItem item12 = new SectionDrawerItem().withIdentifier(12).withName("SPORTS").withTypeface(montserrat_regular);;
         PrimaryDrawerItem item13 = new PrimaryDrawerItem().withIdentifier(13).withName("BBC Sports")
-                .withIcon(R.drawable.ic_bbcsports);
+                .withIcon(R.drawable.ic_bbcsports).withTypeface(montserrat_regular);;
         PrimaryDrawerItem item14 = new PrimaryDrawerItem().withIdentifier(14).withName("ESPN Cric Info")
-                .withIcon(R.drawable.ic_espncricinfo);
+                .withIcon(R.drawable.ic_espncricinfo).withTypeface(montserrat_regular);;
         PrimaryDrawerItem item15 = new PrimaryDrawerItem().withIdentifier(15).withName("Fox Sports")
-                .withIcon(R.drawable.fox);
+                .withIcon(R.drawable.fox).withTypeface(montserrat_regular);;
         PrimaryDrawerItem item16 = new PrimaryDrawerItem().withIdentifier(16).withName("TalkSport")
-                .withIcon(R.drawable.ic_talksport);
+                .withIcon(R.drawable.ic_talksport).withTypeface(montserrat_regular);;
         PrimaryDrawerItem item17 = new PrimaryDrawerItem().withIdentifier(17).withName("The Sport Bible")
-                .withIcon(R.drawable.sport_bible);
-        SectionDrawerItem item18 = new SectionDrawerItem().withIdentifier(18).withName("SCIENCE");
+                .withIcon(R.drawable.sport_bible).withTypeface(montserrat_regular);;
+        SectionDrawerItem item18 = new SectionDrawerItem().withIdentifier(18).withName("SCIENCE").withTypeface(montserrat_regular);;
         PrimaryDrawerItem item19 = new PrimaryDrawerItem().withIdentifier(19).withName("Medical News Today")
-                .withIcon(R.drawable.ic_medicalnewstoday);
+                .withIcon(R.drawable.ic_medicalnewstoday).withTypeface(montserrat_regular);;
         PrimaryDrawerItem item20 = new PrimaryDrawerItem().withIdentifier(20).withName("National Geographic")
-                .withIcon(R.drawable.ic_nationalgeographic);
-        SectionDrawerItem item21 = new SectionDrawerItem().withIdentifier(21).withName("TECHNOLOGY");
+                .withIcon(R.drawable.ic_nationalgeographic).withTypeface(montserrat_regular);;
+        SectionDrawerItem item21 = new SectionDrawerItem().withIdentifier(21).withName("TECHNOLOGY").withTypeface(montserrat_regular);;
         PrimaryDrawerItem item22 = new PrimaryDrawerItem().withIdentifier(22).withName("Crypto Coins News")
-                .withIcon(R.drawable.ic_ccnnews);
+                .withIcon(R.drawable.ic_ccnnews).withTypeface(montserrat_regular);;
         PrimaryDrawerItem item23 = new PrimaryDrawerItem().withIdentifier(23).withName("Engadget")
-                .withIcon(R.drawable.ic_engadget);
+                .withIcon(R.drawable.ic_engadget).withTypeface(montserrat_regular);;
         PrimaryDrawerItem item24 = new PrimaryDrawerItem().withIdentifier(24).withName("The Next Web")
-                .withIcon(R.drawable.ic_thenextweb);
+                .withIcon(R.drawable.ic_thenextweb).withTypeface(montserrat_regular);;
         PrimaryDrawerItem item25 = new PrimaryDrawerItem().withIdentifier(25).withName("The Verge")
-                .withIcon(R.drawable.ic_theverge);
+                .withIcon(R.drawable.ic_theverge).withTypeface(montserrat_regular);;
         PrimaryDrawerItem item26 = new PrimaryDrawerItem().withIdentifier(26).withName("TechCrunch")
-                .withIcon(R.drawable.ic_techcrunch);
+                .withIcon(R.drawable.ic_techcrunch).withTypeface(montserrat_regular);;
         PrimaryDrawerItem item27 = new PrimaryDrawerItem().withIdentifier(27).withName("TechRadar")
-                .withIcon(R.drawable.ic_techradar);
-        SectionDrawerItem item28 = new SectionDrawerItem().withIdentifier(28).withName("GAMING");
+                .withIcon(R.drawable.ic_techradar).withTypeface(montserrat_regular);;
+        SectionDrawerItem item28 = new SectionDrawerItem().withIdentifier(28).withName("GAMING").withTypeface(montserrat_regular);;
         PrimaryDrawerItem item29 = new PrimaryDrawerItem().withIdentifier(29).withName("IGN")
-                .withIcon(R.drawable.ic_ignnews);
+                .withIcon(R.drawable.ic_ignnews).withTypeface(montserrat_regular);;
         PrimaryDrawerItem item30 = new PrimaryDrawerItem().withIdentifier(30).withName("Polygon")
-                .withIcon(R.drawable.ic_polygonnews);
+                .withIcon(R.drawable.ic_polygonnews).withTypeface(montserrat_regular);;
 
         accountHeader = new AccountHeaderBuilder()
                 .withActivity(this)

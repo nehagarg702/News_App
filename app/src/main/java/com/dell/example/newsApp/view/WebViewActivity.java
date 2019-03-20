@@ -5,7 +5,9 @@ package com.dell.example.newsApp.view;
  */
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -28,6 +30,7 @@ public class WebViewActivity extends AppCompatActivity {
     private WebView webView;
     private ProgressBar progressBar;
     private String url;
+    private Typeface montserrat_regular;
     private TextView mTitle;
     private float m_downX;
 
@@ -37,7 +40,8 @@ public class WebViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_web_view);
         url = getIntent().getStringExtra(Constants.INTENT_URL);
         createToolbar();
-
+        AssetManager assetManager = this.getApplicationContext().getAssets();
+        montserrat_regular = Typeface.createFromAsset(assetManager, "fonts/Montserrat-Regular.ttf");
         webView = findViewById(R.id.webView_article);
         progressBar = findViewById(R.id.progressBar);
 
@@ -56,6 +60,7 @@ public class WebViewActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mTitle = findViewById(R.id.toolbar_title_web_view);
         mTitle.setText(url);
+        mTitle.setTypeface(montserrat_regular);
     }
 
     private void initWebView() {
@@ -90,36 +95,6 @@ public class WebViewActivity extends AppCompatActivity {
         webView.clearHistory();
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setHorizontalScrollBarEnabled(false);
-
-        webView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                if (event.getPointerCount() > 1) {
-                    //Multi touch detected
-                    return true;
-                }
-
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN: {
-                        // save the x
-                        m_downX = event.getX();
-                    }
-                    break;
-
-                    case MotionEvent.ACTION_MOVE:
-                    case MotionEvent.ACTION_CANCEL:
-                    case MotionEvent.ACTION_UP: {
-                        event.setLocation(m_downX, event.getY());
-                    }
-                    break;
-                }
-
-                return false;
-            }
-
-
-        });
 
     }
 

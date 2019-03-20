@@ -3,6 +3,8 @@ package com.dell.example.newsApp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -75,10 +77,14 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         private TextView tv_card_main_title;
         private ImageView img_card_main;
         private CardView cardView;
+        AssetManager assetManager = mContext.getApplicationContext().getAssets();
+        Typeface montserrat_regular = Typeface.createFromAsset(assetManager, "fonts/Montserrat-Regular.ttf");
+
 
         public ViewHolder(View view) {
             super(view);
             tv_card_main_title = view.findViewById(R.id.tv_card_main_title);
+            tv_card_main_title.setTypeface(montserrat_regular);
             img_card_main = view.findViewById(R.id.img_card_main);
             cardView = view.findViewById(R.id.card_row);
             view.setOnClickListener(this);

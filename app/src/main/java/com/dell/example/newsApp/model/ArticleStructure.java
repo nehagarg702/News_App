@@ -1,10 +1,12 @@
 package com.dell.example.newsApp.model;
 
+import java.io.Serializable;
+
 /**
  * Class contain all the parameter that define News Article Structure.
  */
 
-public class ArticleStructure {
+public class ArticleStructure implements Serializable {
     private Source source;
     private String author;
     private String title;
